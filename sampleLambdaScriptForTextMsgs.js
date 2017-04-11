@@ -7,21 +7,21 @@ const PHONE_NUMBER = '1-555-555-5555'; // change it to your phone number
 
 exports.handler = (event, context, callback) => {
     
-    var simpleHello = 'Your LIFX bulb is on and emitting a white light.';
-    var helpNeeded = 'Your LIFX bulb is on and emitting a blue light.';
-    var emergency = 'Your LIFX bulb has been turned off.';
+    var whiteLightOn = 'Your LIFX bulb is on and emitting a white light.';
+    var blueLightOn = 'Your LIFX bulb is on and emitting a blue light.';
+    var lightOff = 'Your LIFX bulb has been turned off.';
     
     console.log('Received event:', event);
 
     console.log(`Sending SMS to ${PHONE_NUMBER}`);
     
-    var message = simpleHello;
+    var message = whiteLightOn;
     
     if(event.clickType == "DOUBLE"){
-        message = helpNeeded;
+        message = blueLightOn;
     }
     if(event.clickType == "LONG"){
-        message = emergency;
+        message = lightOff;
     }
     
     const params = {
